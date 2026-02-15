@@ -151,6 +151,10 @@
             margin-top: 20px;
             text-align: center;
             z-index: 10;
+            max-width: 90%; /* Tambahkan max-width agar tidak melebihi lebar layar */
+            word-wrap: break-word; /* Pecah kata panjang agar tidak terpotong */
+            overflow-wrap: break-word; /* Alternatif untuk break-word */
+            hyphens: auto; /* Aktifkan hyphenation jika didukung */
         }
         #line1 {
             overflow: hidden;
@@ -193,6 +197,10 @@
                 font-size: 1.2em; /* Kurangi ukuran font pesan */
                 margin-top: 15px;
                 padding: 0 10px; /* Tambah padding samping agar tidak mepet */
+                max-width: 95%; /* Tingkatkan max-width untuk layar kecil */
+                word-wrap: break-word; /* Pastikan pecah kata */
+                overflow-wrap: break-word;
+                hyphens: auto;
             }
             .heart, .flower, .star {
                 font-size: 1.5em; /* Kurangi ukuran elemen animasi untuk performa */
