@@ -178,6 +178,37 @@
             margin-top: 20px;
             display: none;
         }
+
+        /* Penyesuaian untuk tampilan handphone (layar kecil) */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em; /* Kurangi ukuran font judul agar muat di layar kecil */
+                margin-bottom: 15px;
+            }
+            button {
+                padding: 12px 25px; /* Kurangi padding tombol */
+                font-size: 1em; /* Kurangi ukuran font tombol */
+            }
+            #message {
+                font-size: 1.2em; /* Kurangi ukuran font pesan */
+                margin-top: 15px;
+                padding: 0 10px; /* Tambah padding samping agar tidak mepet */
+            }
+            .heart, .flower, .star {
+                font-size: 1.5em; /* Kurangi ukuran elemen animasi untuk performa */
+            }
+            .confetti {
+                width: 8px; /* Kurangi ukuran confetti */
+                height: 8px;
+            }
+            /* Kurangi frekuensi animasi untuk performa di ponsel */
+            body {
+                animation: bgShift 15s ease-in-out infinite alternate; /* Lambatkan animasi latar */
+            }
+            button {
+                animation: bounce 3s infinite, rainbow 7s linear infinite; /* Lambatkan animasi tombol */
+            }
+        }
     </style>
 </head>
 <body>
@@ -194,15 +225,15 @@
 
     <script>
         let heartCount = 0; // Batas jumlah hati di layar
-        const maxHearts = 15; // Maksimal 15 hati sekaligus
+        const maxHearts = 10; // Kurangi maksimal hati untuk performa di ponsel (dari 15 ke 10)
 
         function showMessage() {
             const message = document.getElementById('message');
             message.style.display = 'block';
             const music = document.getElementById('bgMusic');
             music.play();
-            // Buat confetti, bunga, dan bintang saat tombol diklik (kurangi jumlah)
-            for (let i = 0; i < 30; i++) { // Kurangi dari 100 ke 30
+            // Buat confetti, bunga, dan bintang saat tombol diklik (kurangi jumlah untuk performa)
+            for (let i = 0; i < 20; i++) { // Kurangi dari 30 ke 20
                 createConfetti();
                 if (i % 3 === 0) createFlower();
                 if (i % 5 === 0) createStar();
@@ -259,12 +290,12 @@
         }
 
         
-        setInterval(createHeart, 600);
+        setInterval(createHeart, 800); // Lambatkan frekuensi hati dari 600ms ke 800ms untuk performa
         
         setInterval(() => {
             if (Math.random() > 0.7) createFlower();
             if (Math.random() > 0.8) createStar();
-        }, 2000);
+        }, 3000); // Lambatkan interval dari 2000ms ke 3000ms
     </script>
 </body>
 </html>
